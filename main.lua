@@ -41,9 +41,9 @@ require 'states/PlayState'
 require 'states/ScoreState'
 require 'states/TitleScreenState'
 
-require 'Bird'
-require 'Pipe'
-require 'PipePair'
+require 'classes/Bird'
+require 'classes/Pipe'
+require 'classes/PipePair'
 
 -- physical screen dimensions
 WINDOW_WIDTH = 1280
@@ -53,10 +53,10 @@ WINDOW_HEIGHT = 720
 VIRTUAL_WIDTH = 512
 VIRTUAL_HEIGHT = 288
 
-local background = love.graphics.newImage('background.png')
+local background = love.graphics.newImage('assets/images/background.png')
 local backgroundScroll = 0
 
-local ground = love.graphics.newImage('ground.png')
+local ground = love.graphics.newImage('assets/images/ground.png')
 local groundScroll = 0
 
 local BACKGROUND_SCROLL_SPEED = 30
@@ -78,21 +78,21 @@ function love.load()
     love.window.setTitle('Fifty Bird')
 
     -- initialize our nice-looking retro text fonts
-    smallFont = love.graphics.newFont('font.ttf', 8)
-    mediumFont = love.graphics.newFont('flappy.ttf', 14)
-    flappyFont = love.graphics.newFont('flappy.ttf', 28)
-    hugeFont = love.graphics.newFont('flappy.ttf', 56)
+    smallFont = love.graphics.newFont('assets/fonts/font.ttf', 8)
+    mediumFont = love.graphics.newFont('assets/fonts/flappy.ttf', 14)
+    flappyFont = love.graphics.newFont('assets/fonts/flappy.ttf', 28)
+    hugeFont = love.graphics.newFont('assets/fonts/flappy.ttf', 56)
     love.graphics.setFont(flappyFont)
 
     -- initialize our table of sounds
     sounds = {
-        ['jump'] = love.audio.newSource('jump.wav', 'static'),
-        ['explosion'] = love.audio.newSource('explosion.wav', 'static'),
-        ['hurt'] = love.audio.newSource('hurt.wav', 'static'),
-        ['score'] = love.audio.newSource('score.wav', 'static'),
+        ['jump'] = love.audio.newSource('assets/audio/jump.wav', 'static'),
+        ['explosion'] = love.audio.newSource('assets/audio/explosion.wav', 'static'),
+        ['hurt'] = love.audio.newSource('assets/audio/hurt.wav', 'static'),
+        ['score'] = love.audio.newSource('assets/audio/score.wav', 'static'),
 
         -- https://freesound.org/people/xsgianni/sounds/388079/
-        ['music'] = love.audio.newSource('marios_way.mp3', 'static')
+        ['music'] = love.audio.newSource('assets/audio/marios_way.mp3', 'static')
     }
 
     -- kick off music
